@@ -5,11 +5,13 @@ on:
 jobs:
   cpd:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        repo: ${{ fromJSON(needs.enumerate.outputs.repos) }}
     name: Check duplicated code
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Check duplication
-        uses: getunlatch/jscpd-github-action@v1.2
+      - uses: actions/checkout@v3
         with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          repository: ${{ matrix.repo }}
+      - name: Check duplication
+        run: npx jscpd --silent --min-tokens 40 .
