@@ -5,13 +5,10 @@ on:
 jobs:
   cpd:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        repo: ${{ fromJSON(needs.enumerate.outputs.repos) }}
     name: Check duplicated code
     steps:
       - uses: actions/checkout@v3
         with:
           repository: ${{ matrix.repo }}
       - name: Check duplication
-        run: npx jscpd --silent --min-tokens 40 .
+        run: npx jscpd --min-tokens 40 .
