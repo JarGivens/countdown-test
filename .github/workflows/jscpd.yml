@@ -7,8 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Check duplicated code
     steps:
-      - uses: actions/checkout@v3
-        with:
-          repository: ${{ matrix.repo }}
+      - uses: actions/checkout@v4
       - name: Check duplication
         run: npx jscpd --min-tokens 40 .
