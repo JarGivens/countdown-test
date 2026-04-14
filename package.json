@@ -39,6 +39,7 @@
   "devDependencies": {
     "bower": "1.8.9",
     "browserify": "6.0.3",
+    "jest": "^30.3.0",
     "uglify-js": "2.6.0"
   }
 }
