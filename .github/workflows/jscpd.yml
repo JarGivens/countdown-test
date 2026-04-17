@@ -1,6 +1,8 @@
 name: Duplicate Checker
 on: 
   pull_request:
+  push:
+  workflow_dispatch: 
 
 jobs:
   cpd:
